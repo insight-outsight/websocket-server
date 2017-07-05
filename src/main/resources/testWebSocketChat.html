@@ -1,0 +1,111 @@
+<html>
+     <head>
+         <meta charset="utf-8">
+         <title>WebScoket Chatroom</title>
+     </head>
+     <body>
+         <form action="" onsubmit="return false;">
+             <input type="text" size="200" name="message" value=""/>
+             <br>
+             <input type="button" value="send" value="发送websocket请求消息" onclick="send(this.form.message.value);" /> 
+             <hr>
+             <h3>服务器返回信息</h3>
+             <textarea id="responseText" rows="30" cols="200"></textarea>
+         </form>
+     </body>
+     
+     <script type="text/javascript">
+         var websocket;
+	 var reconnectIntervalTimer=null;
+         if(!window.WebSocket){
+             window.WebSocket = window.MozWebSocket;
+         }
+         if(window.WebSocket){
+            reconnect(); 
+         }
+	 else{
+             alert("对不起，您的浏览器不支持WebSocket.");
+         }
+         
+         function send(message){
+             if(!window.WebSocket){
+                 return ;
+             }
+             if(websocket.readyState == WebSocket.OPEN){
+                 websocket.send(message);
+             }else{
+                 alert("发送信息失败，因为WebSocket 连接已关闭");
+             }
+         }
+
+	var heartBeatChecker = {
+    		timeout: 30000,//30s
+    		timeoutObj: null,
+    		serverTimeoutObj: null,
+    		reset: function(){
+        		clearTimeout(this.timeoutObj);
+        		clearTimeout(this.serverTimeoutObj);
+　　　　		this.start();
+    		},
+    		start: function(){
+        		var self = this;
+        		this.timeoutObj = setTimeout(function(){
+            			if(websocket.readyState == WebSocket.OPEN){
+             				websocket.send("{\"bt\":\"testbt\",\"_\":\"ping\"}");
+				}
+            			self.serverTimeoutObj = setTimeout(function(){
+                			websocket.close();//如果onclose会执行reconnect，我们执行ws.close()就行了.如果直接执行reconnect 会触发onclose导致重连两次
+            			}, self.timeout)
+        		}, this.timeout)
+    		},
+	}
+	function reconnect(){
+ 	   if(websocket==null || websocket.readyState != WebSocket.OPEN){
+		 websocket = new WebSocket("ws://localhost:8123/yl");
+ 		 websocket.onmessage = function(event){
+                 	var ta = document.getElementById('responseText');
+                 	//ta.value="";
+                 	//ta.value=event.data;
+                	var textNode=document.createTextNode(event.data+"\r\n");
+                	ta.appendChild(textNode);
+                	heartBeatChecker.reset();
+             	};
+             	websocket.onopen = function(event){
+                	var ta = document.getElementById('responseText');
+                 	//ta.value = "websocket打开";
+                	var textNode=document.createTextNode("websocket打开："+event.data+"\r\n");
+                	ta.appendChild(textNode);
+                	heartBeatChecker.start();
+                	if(reconnectIntervalTimer!=null){
+                        	clearInterval(reconnectIntervalTimer);
+                        	reconnectIntervalTimer=null;
+                	}
+             	};
+             	websocket.onclose = function(event){
+                 	var ta = document.getElementById('responseText');
+                 	//ta.value="";
+                 	//ta.value="websocket关闭";
+                	var textNode=document.createTextNode("websocket关闭："+event.data+"\r\n");
+                	ta.appendChild(textNode);
+                	if(reconnectIntervalTimer==null){
+                        	reconnectIntervalTimer = setInterval("reconnect()",5000);
+                	}
+			websocket = null;
+                //        if(websocket!=null && websocket.readyState == WebSocket.OPEN){
+                //                textNode=document.createTextNode("准备关闭websocket\r\n");
+                //                ta.appendChild(textNode);
+                //                websocket.close();
+                //                textNode=document.createTextNode("执行了关闭websocket\r\n");
+                //                ta.appendChild(textNode);
+                //        }
+             	};
+             	websocket.onerror = function(event) {
+                	var ta = document.getElementById('responseText');
+                	var textNode=document.createTextNode("websocket出错："+event.data+"\r\n");
+                	ta.appendChild(textNode);
+            	};
+	   }
+	}	
+     </script>
+ </html>
+
