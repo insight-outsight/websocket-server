@@ -1,9 +1,9 @@
-package com.immomo.wsconnector.context;
+package com.selffun.wsconnector.context;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.immomo.wsconnector.config.WSSConfig;
+import com.selffun.wsconnector.config.WSSConfig;
 
 
 public class Context {

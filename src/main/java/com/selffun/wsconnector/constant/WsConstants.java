@@ -1,6 +1,6 @@
-package com.immomo.wsconnector.constant;
+package com.selffun.wsconnector.constant;
 
-import com.immomo.wsconnector.session.WebClientSession;
+import com.selffun.wsconnector.session.WebClientSession;
 
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker;
 import io.netty.util.AttributeKey;

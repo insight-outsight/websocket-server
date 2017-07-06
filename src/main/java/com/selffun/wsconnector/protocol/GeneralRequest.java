@@ -1,4 +1,4 @@
-package com.immomo.wsconnecotor.protocol;
+package com.selffun.wsconnector.protocol;
 
 import java.util.Map;
 

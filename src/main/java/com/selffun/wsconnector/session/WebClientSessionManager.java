@@ -1,10 +1,10 @@
-package com.immomo.wsconnector.session;
+package com.selffun.wsconnector.session;
 
 import io.netty.channel.Channel;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.immomo.wsconnector.constant.WsConstants;
+import com.selffun.wsconnector.constant.WsConstants;
 
 public class WebClientSessionManager {
 	

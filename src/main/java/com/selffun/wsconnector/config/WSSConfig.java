@@ -1,4 +1,4 @@
-package com.immomo.wsconnector.config;
+package com.selffun.wsconnector.config;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.slf4j.Logger;

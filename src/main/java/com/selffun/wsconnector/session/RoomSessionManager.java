@@ -1,4 +1,4 @@
-package com.immomo.wsconnector.session;
+package com.selffun.wsconnector.session;
 
 import io.netty.channel.Channel;
 

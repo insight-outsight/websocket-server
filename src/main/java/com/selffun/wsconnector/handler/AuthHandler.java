@@ -1,7 +1,7 @@
-package com.immomo.wsconnector.handler;
+package com.selffun.wsconnector.handler;
 
-import com.immomo.wsconnecotor.protocol.GeneralRequest;
-import com.immomo.wsconnector.session.WebClientSessionManager;
+import com.selffun.wsconnector.protocol.GeneralRequest;
+import com.selffun.wsconnector.session.WebClientSessionManager;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

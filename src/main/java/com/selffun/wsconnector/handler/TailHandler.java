@@ -1,8 +1,8 @@
-package com.immomo.wsconnector.handler;
+package com.selffun.wsconnector.handler;
 
-import com.immomo.wsconnector.constant.WsConstants;
-import com.immomo.wsconnector.session.WebClientSessionManager;
-import com.immomo.wsconnector.session.WebClientSession;
+import com.selffun.wsconnector.constant.WsConstants;
+import com.selffun.wsconnector.session.WebClientSession;
+import com.selffun.wsconnector.session.WebClientSessionManager;
 
 import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;

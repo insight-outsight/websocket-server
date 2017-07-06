@@ -1,7 +1,7 @@
-package com.immomo.wsconnector.handler;
+package com.selffun.wsconnector.handler;
 
-import com.immomo.wsconnector.constant.WsConstants;
-import com.immomo.wsconnector.context.Context;
+import com.selffun.wsconnector.constant.WsConstants;
+import com.selffun.wsconnector.context.Context;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

@@ -1,11 +1,11 @@
-package com.immomo.wsconnector.handler;
+package com.selffun.wsconnector.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.immomo.wsconnecotor.protocol.GeneralRequest;
-import com.immomo.wsconnector.constant.WsConstants;
-import com.immomo.wsconnector.util.JacksonJSONUtils;
+import com.selffun.wsconnector.constant.WsConstants;
+import com.selffun.wsconnector.protocol.GeneralRequest;
+import com.selffun.wsconnector.util.JacksonJSONUtils;
 
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;

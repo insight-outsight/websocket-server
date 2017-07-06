@@ -1,4 +1,4 @@
-package com.immomo.wsconnector.main;
+package com.selffun.wsconnector.main;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -18,15 +18,15 @@ import java.util.concurrent.ThreadFactory;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.immomo.wsconnector.config.WSSConfig;
-import com.immomo.wsconnector.context.Context;
-import com.immomo.wsconnector.handler.AuthHandler;
-import com.immomo.wsconnector.handler.FullHttpRequestHandler;
-import com.immomo.wsconnector.handler.MsgHandler;
-import com.immomo.wsconnector.handler.PingHandler;
-import com.immomo.wsconnector.handler.TailHandler;
-import com.immomo.wsconnector.handler.WebSocketFrameHandler;
-import com.immomo.wsconnector.util.ConfigUtils;
+import com.selffun.wsconnector.config.WSSConfig;
+import com.selffun.wsconnector.context.Context;
+import com.selffun.wsconnector.handler.AuthHandler;
+import com.selffun.wsconnector.handler.FullHttpRequestHandler;
+import com.selffun.wsconnector.handler.MsgHandler;
+import com.selffun.wsconnector.handler.PingHandler;
+import com.selffun.wsconnector.handler.TailHandler;
+import com.selffun.wsconnector.handler.WebSocketFrameHandler;
+import com.selffun.wsconnector.util.ConfigUtils;
 
 public class Bootstrap {
 
